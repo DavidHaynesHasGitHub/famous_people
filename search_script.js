@@ -11,11 +11,10 @@ const knex = require("knex")({
 
 console.log('Searching...');
 
-knex.select().from('famous_people')
+knex('famous_people')
   .where('first_name', process.argv[2])
   .orWhere('last_name', process.argv[2])
   .asCallback(function(err, rows) {
-  if (err) return console.error(err);
-    console.log(`Found (${rows.length}) persons by the name \'${process.argv[2]}\':`);
-    console.log(JSON.stringify(rows))
+    if (err) return console.error(err);
+      console.log(rows);
   });

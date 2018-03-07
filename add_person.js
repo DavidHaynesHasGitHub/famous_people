@@ -11,6 +11,7 @@ const knex = require("knex")({
 
 knex('famous_people')
   .returning('id')
-  .insert([{first_name: process.argv[2], last_name:process.argv[3], birthdate:process.argv[4]}]).asCallback(function (err, data) {
+  .insert([{first_name: process.argv[2], last_name:process.argv[3], birthdate:process.argv[4]}])
+  .asCallback(function (err, data) {
     console.log('inserted data:', data);
 });
